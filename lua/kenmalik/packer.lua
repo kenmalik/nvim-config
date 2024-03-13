@@ -57,4 +57,14 @@ return require('packer').startup(function(use)
     use('windwp/nvim-ts-autotag')
     use("rafamadriz/friendly-snippets")
     use('saadparwaiz1/cmp_luasnip')
+
+    -- Cmp
+    use "hrsh7th/cmp-nvim-lsp-signature-help"
+    use "hrsh7th/cmp-path"
+
+    -- Color hinting
+    use 'NvChad/nvim-colorizer.lua'
+    use({
+        "roobert/tailwindcss-colorizer-cmp.nvim",
+    })
 end)

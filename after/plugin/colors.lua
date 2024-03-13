@@ -2,8 +2,16 @@ function SetColors(color)
     color = color or "kanagawa-wave"
     vim.cmd.colorscheme(color)
 
---    vim.cmd [[hi StatusLine guibg=NONE]]
+    require 'colorizer'.setup({
+        filetypes = {
+            '*',
+            '!cmp_menu', -- Disable highlighting in cmp menu
+        },
+        user_default_options = {
+            tailwind = true,
+            mode = "background",
+        }
+    })
+
     vim.opt.signcolumn = "no"
-
 end
-
