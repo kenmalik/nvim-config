@@ -17,19 +17,9 @@ return require('packer').startup(function(use)
     use {
         'rebelot/kanagawa.nvim'
     }
+
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/playground')
-
-    --  use({
-    --	  'projekt0n/github-nvim-theme',
-    --	  config = function()
-    --		  require('github-theme').setup({
-    --			  -- ...
-    --		  })
-    --
-    --		  vim.cmd('colorscheme github_dark_default')
-    --	  end
-    --  })
 
     use('ThePrimeagen/harpoon')
     use('mbbill/undotree')
@@ -54,7 +44,6 @@ return require('packer').startup(function(use)
 
     use('lervag/vimtex')
 
-    use('windwp/nvim-ts-autotag')
     use("rafamadriz/friendly-snippets")
     use('saadparwaiz1/cmp_luasnip')
 
@@ -67,4 +56,34 @@ return require('packer').startup(function(use)
     use({
         "roobert/tailwindcss-colorizer-cmp.nvim",
     })
+
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
+
+    use 'sbdchd/neoformat'
+    use 'mfussenegger/nvim-lint'
+
+    use 'mfussenegger/nvim-dap'
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } }
+
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
+
+    use({
+        "kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end
+    })
+
+    use 'mfussenegger/nvim-jdtls'
 end)
