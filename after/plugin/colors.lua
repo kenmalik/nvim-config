@@ -1,5 +1,6 @@
 function SetColors(color)
     color = color or "kanagawa-wave"
+    -- color = color or "catppuccin-mocha"
     vim.cmd.colorscheme(color)
 
     require 'colorizer'.setup({
@@ -13,5 +14,5 @@ function SetColors(color)
         }
     })
 
-    vim.opt.signcolumn = "no"
+    -- vim.opt.signcolumn = "no"
 end
