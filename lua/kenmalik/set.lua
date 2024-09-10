@@ -33,3 +33,5 @@ vim.g.maplocalleader = " "
 vim.opt.guicursor = "n-v-c:block-blinkon1000-blinkoff1000"
 
 vim.opt.clipboard:append { 'unnamed', 'unnamedplus' }
+
+vim.filetype.add({ extension = { templ = "templ" } })
