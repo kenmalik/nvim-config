@@ -21,8 +21,12 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
+  ensure_installed = { 'tsserver', 'gopls', 'pyright' },
   handlers = {
-    lsp_zero.default_setup,
+    function(server_name)
+      require('lspconfig')[server_name].setup({})
+    end,
+
     lua_ls = function()
       local lua_opts = lsp_zero.nvim_lua_ls()
       require('lspconfig').lua_ls.setup(lua_opts)
@@ -30,20 +34,7 @@ require('mason-lspconfig').setup({
   }
 })
 
-require('lspconfig').cmake.setup({
-  handlers = {
-    filetypes = { "cmake", "CMakeLists.txt" }
-  }
-})
-
-require('lspconfig').tailwindcss.setup({
-  handlers = {
-    filetypes = { "js", "jsx" }
-  }
-})
-
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*.js", "*.ts", "*.cpp", "*.cxx", "*.cc", "*.h", "*.hpp", "*.hxx", "*.hh", "*.jsx", "*.tsx" },
   command = "Neoformat"
 })
-
