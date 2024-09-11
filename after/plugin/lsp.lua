@@ -41,7 +41,7 @@ end)
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
-	ensure_installed = { "tsserver", "gopls", "pyright" },
+	ensure_installed = { "ts_ls", "gopls", "pyright" },
 	handlers = {
 		function(server_name)
 			require("lspconfig")[server_name].setup({})
@@ -75,4 +75,12 @@ require("mason-lspconfig").setup({
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	pattern = { "*.js", "*.ts", "*.cpp", "*.cxx", "*.cc", "*.h", "*.hpp", "*.hxx", "*.hh", "*.jsx", "*.tsx" },
 	command = "Neoformat",
+})
+
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+	pattern = { "*.templ" },
+	callback = function()
+		vim.cmd("silent !templ generate")
+		vim.cmd("LspRestart")
+	end,
 })
