@@ -72,6 +72,8 @@ require("mason-lspconfig").setup({
 	},
 })
 
+require'lspconfig'.dartls.setup{}
+
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	pattern = { "*.js", "*.ts", "*.cpp", "*.cxx", "*.cc", "*.h", "*.hpp", "*.hxx", "*.hh", "*.jsx", "*.tsx" },
 	command = "Neoformat",

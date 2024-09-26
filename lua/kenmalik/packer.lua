@@ -89,4 +89,11 @@ return require("packer").startup(function(use)
 	})
 
 	use("mfussenegger/nvim-jdtls")
+
+  use({
+    "olrtg/nvim-emmet",
+    config = function()
+      vim.keymap.set({ "n", "v" }, '<leader>wa', require('nvim-emmet').wrap_with_abbreviation)
+    end
+  })
 end)
