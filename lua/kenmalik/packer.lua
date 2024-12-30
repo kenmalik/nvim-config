@@ -96,4 +96,6 @@ return require("packer").startup(function(use)
       vim.keymap.set({ "n", "v" }, '<leader>wa', require('nvim-emmet').wrap_with_abbreviation)
     end
   })
+
+  use("stevearc/oil.nvim")
 end)
