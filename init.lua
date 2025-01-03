@@ -1,1 +1,2 @@
-require("kenmalik")
+require("config.lazy")
+require("config.options")

@@ -27,9 +27,6 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 vim.opt.guicursor = "n-v-c:block-blinkon1000-blinkoff1000"
 
 vim.opt.clipboard:append { 'unnamed', 'unnamedplus' }
