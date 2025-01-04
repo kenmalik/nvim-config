@@ -21,6 +21,9 @@ return {
         ["g\\"] = { "actions.toggle_trash", mode = "n" },
       },
       use_default_keymaps = false,
+      view_options = {
+        show_hidden = true
+      }
   },
   -- Optional dependencies
   -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
