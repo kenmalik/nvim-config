@@ -1,7 +1,10 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
-  opts = {
+  config = function ()
+    local configs = require "nvim-treesitter.configs"
+
+    configs.setup({
       -- A list of parser names, or "all" (the five listed parsers should always be installed)
       ensure_installed = { "javascript", "typescript", "c", "lua", "vim", "vimdoc", "query", "cpp" },
 
@@ -27,5 +30,6 @@ return {
       autotag = {
         enable = true,
       }
-  }
+    })
+  end
 }
