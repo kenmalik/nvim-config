@@ -1,11 +1,11 @@
 return {
-  'saghen/blink.cmp',
-  version = '*',
+  "saghen/blink.cmp",
+  version = "*",
   dependencies = {
-    'L3MON4D3/LuaSnip',
-    version = 'v2.*',
+    "L3MON4D3/LuaSnip",
+    version = "v2.*",
     build = "make install_jsregexp",
-    dependencies = { 'rafamadriz/friendly-snippets' },
+    dependencies = { "rafamadriz/friendly-snippets" },
     config = function()
       local ls = require("luasnip")
 
@@ -37,28 +37,31 @@ return {
   },
 
   opts = {
-    keymap = { preset = 'default' },
+    keymap = { preset = "default" },
 
     appearance = {
       use_nvim_cmp_as_default = true,
-      nerd_font_variant = 'mono'
+      nerd_font_variant = "mono"
     },
 
     signature = { enabled = true },
 
     snippets = {
-      expand = function(snippet) require('luasnip').lsp_expand(snippet) end,
+      expand = function(snippet) require("luasnip").lsp_expand(snippet) end,
       active = function(filter)
         if filter and filter.direction then
-          return require('luasnip').jumpable(filter.direction)
+          return require("luasnip").jumpable(filter.direction)
         end
-        return require('luasnip').in_snippet()
+        return require("luasnip").in_snippet()
       end,
-      jump = function(direction) require('luasnip').jump(direction) end,
+      jump = function(direction) require("luasnip").jump(direction) end,
     },
 
     sources = {
-      default = { 'lsp', 'path', 'luasnip', 'buffer' },
+      default = { "lsp", "path", "luasnip", "buffer", "dadbod" },
+      providers = {
+        dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+      },
     },
   },
   opts_extend = { "sources.default" }
