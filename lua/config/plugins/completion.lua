@@ -18,6 +18,10 @@ return {
 				enable_autosnippets = true,
 			})
 
+			ls.filetype_extend("javascript", { "html" })
+			ls.filetype_extend("javascriptreact", { "html" })
+			ls.filetype_extend("typescriptreact", { "html" })
+
 			vim.keymap.set({ "i" }, "<C-K>", function()
 				ls.expand()
 			end, { silent = true })
@@ -65,7 +69,7 @@ return {
 		},
 
 		sources = {
-			default = { "lsp", "path", "luasnip", "buffer", "dadbod" },
+			default = { "lsp", "path", "snippets", "buffer", "dadbod" },
 			providers = {
 				dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
 			},
