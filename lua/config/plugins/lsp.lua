@@ -1,7 +1,7 @@
 return {
-	{ "williamboman/mason.nvim", opts = {} },
+	{ "mason-org/mason.nvim", opts = {} },
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		opts = {
 			ensure_installed = { "ts_ls", "gopls", "pyright" },
 			handlers = {
@@ -11,6 +11,14 @@ return {
 						capabilities = capabilities,
 					})
 				end,
+
+        cmake = function ()
+          require("lspconfig").cmake.setup({
+            filetypes = {
+              "cmake",
+            }
+          })
+        end,
 
 				emmet_language_server = function()
 					local capabilities = require("blink.cmp").get_lsp_capabilities()
