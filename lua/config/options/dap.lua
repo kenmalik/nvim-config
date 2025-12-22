@@ -1,4 +1,45 @@
-local dap = require("dap")
+local dap, dapui = require("dap"), require("dapui")
+
+vim.keymap.set("n", "<Leader>b", function()
+	dap.toggle_breakpoint()
+end)
+vim.keymap.set("n", "<Leader>cb", function()
+    dap.set_breakpoint(vim.fn.input("Condition: "), nil, nil)
+end)
+vim.keymap.set("n", "<Leader>lp", function()
+	dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+end)
+vim.keymap.set("n", "<Leader>c", function()
+	dap.continue()
+end)
+
+dap.listeners.before["event_process"]["keymaps"] = function()
+	vim.keymap.set("n", "<Down>", function()
+		dap.step_over()
+	end)
+	vim.keymap.set("n", "<Right>", function()
+		dap.step_into()
+	end)
+	vim.keymap.set("n", "<Left>", function()
+		dap.step_out()
+	end)
+	vim.keymap.set("n", "<Up>", function()
+		dap.restart_frame()
+	end)
+end
+
+dap.listeners.before["event_terminated"]["keymaps"] = function()
+	vim.keymap.del("n", "<Down>")
+	vim.keymap.del("n", "<Right>")
+	vim.keymap.del("n", "<Left>")
+	vim.keymap.del("n", "<Up>")
+end
+
+dap.listeners.before["event_process"]["dapui"] = function()
+	dapui.open()
+end
+vim.keymap.set("n", "<Leader>dui", function() dapui.toggle() end)
+
 dap.adapters.cppdbg = {
 	id = "cppdbg",
 	type = "executable",
