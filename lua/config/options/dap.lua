@@ -28,6 +28,9 @@ dap.listeners.before["event_process"]["keymaps"] = function()
 	vim.keymap.set("n", "<Leader>dr", function()
 		dap.restart()
 	end)
+	vim.keymap.set("n", "<Leader>dt", function()
+		dap.terminate()
+	end)
 end
 
 dap.listeners.before["event_terminated"]["keymaps"] = function()
@@ -36,6 +39,7 @@ dap.listeners.before["event_terminated"]["keymaps"] = function()
 	vim.keymap.del("n", "<Left>")
 	vim.keymap.del("n", "<Up>")
 	vim.keymap.del("n", "<Leader>dr")
+	vim.keymap.del("n", "<Leader>dt")
 end
 
 dap.listeners.before["event_process"]["dapui"] = function()
