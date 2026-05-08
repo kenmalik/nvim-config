@@ -24,10 +24,6 @@ vim.g.maplocalleader = "\\"
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    { "sainnhe/everforest", config = function()
-      vim.g.everforest_background = "hard"
-      vim.cmd.colorscheme "everforest"
-    end },
     -- import your plugins
     { import = "config.plugins" },
   },
