@@ -1,3 +1,5 @@
+vim.cmd("colorscheme kanagawa")
+
 vim.opt.nu = true
 
 vim.opt.tabstop = 4
