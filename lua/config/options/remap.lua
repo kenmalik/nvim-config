@@ -29,3 +29,10 @@ end)
 vim.keymap.set("n", "<leader>vca", function()
     vim.lsp.buf.code_action()
 end)
+vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
+    if vim.snippet.active({ direction = -1 }) then
+        return "<cmd>lua vim.snippet.jump(-1)<cr>"
+    else
+        return "<Tab>"
+    end
+end, { expr = true, silent = true })
